@@ -10,10 +10,6 @@ class PagesController extends Controller
         return view('pages.home');
     }
 
-    public function hotels(){
-        return view('pages.hotelspage');
-    }
-
     public function about(){
         return view('pages.about');
     }
