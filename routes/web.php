@@ -13,7 +13,10 @@
 
 
 Route::get('/', 'PagesController@home');
-Route::get('/hotelspage', 'PagesController@hotels');
 Route::get('/about', 'PagesController@about');
 
 Route::resource('hotels', 'HotelsController');
+
+Auth::routes();
+
+Route::get('/dashboardone', 'DashboardOneController@index');

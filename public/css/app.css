@@ -4639,11 +4639,12 @@ input[type="button"].btn-block {
 }
 
 .navbar-brand {
+  color: #1c9c23;
   display: inline-block;
   padding-top: 0.32rem;
   padding-bottom: 0.32rem;
   margin-right: 1rem;
-  font-size: 1.125rem;
+  font-size: 1.150rem;
   line-height: inherit;
   white-space: nowrap;
 }
@@ -4651,6 +4652,7 @@ input[type="button"].btn-block {
 .navbar-brand:hover,
 .navbar-brand:focus {
   text-decoration: none;
+  color: #1c9c23;
 }
 
 .navbar-nav {
