@@ -45,6 +45,24 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admin',
+        ],
+
+        'admin-api' => [
+            'driver' => 'token',
+            'provider' => 'admin',
+        ],
+        // 'hoteladmin' => [
+        //     'driver' => 'session',
+        //     'provider' => 'hoteladmin',
+        // ],
+
+        // 'hoteladmin-api' => [
+        //     'driver' => 'token',
+        //     'provider' => 'hoteladmin',
+        // ],
     ],
 
     /*
@@ -60,7 +78,7 @@ return [
     | sources which represent each model / table. These sources may then
     | be assigned to any extra authentication guards you have defined.
     |
-    | Supported: "database", "eloquent"
+    | Supported: "database", "eloquent"s
     |
     */
 
@@ -69,6 +87,14 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
+        'admin' => [
+            'driver' => 'eloquent',
+            'model' => App\Admin::class,
+        ],
+        // 'hoteladmin' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\HotelAdmin::class,
+        // ],
 
         // 'users' => [
         //     'driver' => 'database',
@@ -97,6 +123,16 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
         ],
+        'admin' => [
+            'provider' => 'admin',
+            'table' => 'password_resets',
+            'expire' => 15,
+        ],
+        // 'hoteladmin' => [
+        //     'provider' => 'hoteladmin',
+        //     'table' => 'password_resets',
+        //     'expire' => 15,
+        // ],
     ],
 
 ];
