@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+<br>
+<br>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -12,18 +14,46 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="fname" class="col-md-4 col-form-label text-md-right">{{ __('First Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="fname" type="text" class="form-control{{ $errors->has('fname') ? ' is-invalid' : '' }}" name="fname" value="{{ old('fname') }}" required autofocus>
 
-                                @if ($errors->has('name'))
+                                @if ($errors->has('fname'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->first('fname') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                                <label for="lname" class="col-md-4 col-form-label text-md-right">{{ __('Last Name') }}</label>
+    
+                                <div class="col-md-6">
+                                    <input id="lname" type="text" class="form-control{{ $errors->has('lname') ? ' is-invalid' : '' }}" name="lname" value="{{ old('lname') }}" required autofocus>
+    
+                                    @if ($errors->has('lname'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('lname') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                        <div class="form-group row">
+                                <label for="contact" class="col-md-4 col-form-label text-md-right">{{ __('Contact Number') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="contct" type="text" class="form-control{{ $errors->has('contact') ? ' is-invalid' : '' }}" name="contact" value="{{ old('contact') }}" required autofocus>
+
+                                    @if ($errors->has('contact'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('contact') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>    
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
@@ -60,6 +90,14 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
+                        <div class="form-group row mb-1">
+                                <div class="form-check offset-md-4">
+                                  <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+                                  <label class="form-check-label" for="invalidCheck2">
+                                    I agree to <a href="#"><span>terms and conditions</span></a>
+                                  </label>
+                                </div>
+                              </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

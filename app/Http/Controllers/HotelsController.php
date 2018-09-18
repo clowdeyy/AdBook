@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Hotel;
 
+
 class HotelsController extends Controller
 {
     /**
@@ -15,7 +16,7 @@ class HotelsController extends Controller
     public function index()
     {
         //$hotels = Hotel::all();
-        $hotels = Hotel::orderBy('name')->paginate(5);
+        $hotels = Hotel::orderBy('name')->paginate(6);
         return view('hotels.index')->with('hotels', $hotels);
     }
 
@@ -26,7 +27,7 @@ class HotelsController extends Controller
      */
     public function create()
     {
-        //
+        return('heh');
     }
 
     /**
