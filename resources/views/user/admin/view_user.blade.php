@@ -34,7 +34,7 @@
                   <!-- The user image in the navbar-->
                   <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="user-image" alt="User Image">
                   <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                  <span class="hidden-xs">{{auth()->user()->name}}</span>
+                  <span class="hidden-xs">{{auth()->user()->fname}} {{auth()->user()->lname}}</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- The user image in the menu -->
@@ -42,7 +42,7 @@
                     <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
     
                     <p>
-                    {{auth()->user()->name}} - Admin </p>
+                      {{auth()->user()->fname}} {{auth()->user()->lname}} - Admin </p>
                   </li>
                   <!-- Menu Body -->
                   <li class="user-body">
@@ -83,7 +83,7 @@
               <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-              <p>{{auth()->user()->name}}</p>
+              <p>{{auth()->user()->fname}} {{auth()->user()->lname}}</p>
               <!-- Status -->
               <a><i class="fa fa-circle text-success"></i> Administrator</a>
             </div>
@@ -128,6 +128,7 @@
                   </ul> 
 
                   <a href="{{route('hoteladmin')}}" class="btn btn-primary">New Hotel Admin</a>
+                  {{-- @if(count($users)>0) --}}
                   <table class="table">
                       <thead>
                         <tr>
@@ -138,24 +139,23 @@
                           <th>Actions</th>
                         </tr>
                       </thead>
-                    {{-- @foreach() --}}
-                        <tr class="{{--{{$user->status_id == 0 ? 'alert alert-danger': ''}}--}}   ">
-
-                          </td>
-                              <td></td> 
-                              <td>{{--{{$user->fname}} {{$user->lname}}--}}</td>
-                              <td></td>
-                              <td></td>
+                    @foreach($hotels as $hotel)
+                        <tr>
+                              <td>
+                                  {{$hotel->name}}
+                              </td> 
+                              <td>{{$hotel->fname}} {{$hotel->lname}}</td>
+                              <td>{{$hotel->contact}}</td>
+                              <td>{{$hotel->email}}</td>
                             <td>
                               <form action="{{--{{route('admin_lock_me', ['id'=> $user->id])}}" method="get" id="formDel{{$user->id}}--}}">
-                                <button type="button" value="" class="btn btn-success btn-xs delMe"><i class="glyphicon glyphicon-edit"></i></button>
                                 <button type="button" value="{{--{{$user->id}}--}}" class="btn btn-danger btn-xs delMe"><i class="glyphicon glyphicon-lock"></i></button>
                                 <button type="button" value="{{--{{$user->id}}--}}" class="btn btn-success btn-xs delMe"><i class="glyphicon glyphicon-repeat"></i></button>
                             </form>
                             </td>
                         </tr>
-                      {{-- @endforeach --}}
-                      </table>                  
+                    @endforeach
+                      </table> 
               </div>
             </div>
         </section>

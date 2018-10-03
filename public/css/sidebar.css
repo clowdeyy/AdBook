@@ -5,6 +5,25 @@
  */
 
 /* Toggle Styles */
+.sidebar-nav {
+    margin-top: 51px;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .sidebar-nav {
+      margin-top: 41px;
+    }
+  }
+  
+  .double-nav {
+    z-index: 1000;
+  }
+  
+  @media only screen and (max-width: 1024px) {
+    .double-nav .breadcrumb-dn {
+      display: none;
+    }
+  }
 
 #wrapper {
     padding-left: 0;

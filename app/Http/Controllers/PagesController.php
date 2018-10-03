@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Hotel;
 
 class PagesController extends Controller
 {
     public function home(){
-        return view('pages.home');
+        $hotels = Hotel::all();
+        return view('pages.home')->with('hotels', $hotels);
     }
 
     public function about(){

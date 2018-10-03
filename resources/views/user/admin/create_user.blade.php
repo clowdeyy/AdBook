@@ -34,7 +34,7 @@
                   <!-- The user image in the navbar-->
                   <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="user-image" alt="User Image">
                   <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                  <span class="hidden-xs">{{auth()->user()->name}}</span>
+                  <span class="hidden-xs">{{auth()->user()->fname}} {{auth()->user()->lname}}</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- The user image in the menu -->
@@ -119,43 +119,75 @@
                 @if(Session::has('yes'))
                   <div class="alert alert-info alert-dismissable">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <strong>Information!</strong>{{Session::get('yes')}}
+                    <strong>Information: </strong>{{Session::get('yes')}}
                   </div>
                @endif
-
-               <form style="margin-left: 100px;">
-                  <div class="form-row">
-                        <div class="form-group col-md-5">
-                          <label>First Name</label>
-                          <input type="fname" class="form-control" placeholder="First Name">
-                        </div>
-                        <div class="form-group col-md-5">
-                          <label>Last Name</label>
-                          <input type="lname" class="form-control" placeholder="Last Name">
-                        </div>
-                      </div>
-                      <div class="form-group col-md-10">
-                        <label>Email</label>
-                        <input type="email" class="form-control" placeholder="Email Address">
-                      </div>
-                      <div class="form-group col-md-10">
-                          <label>Contact Number</label>
-                          <input type="contact" class="form-control" placeholder="Contact Number">
-                      </div>
-                      <div class="form-group col-md-5">
-                          <label>Password</label>
-                          <input type="pass" class="form-control" placeholder="Password">
-                        </div>
-                        <div class="form-group col-md-5">
-                          <label>Confirm Password</label>
-                          <input type="confirm" class="form-control" placeholder="Confirm Password">
-                        </div>
-                      </div>
-                      {{csrf_field()}}
-                      <button type="submit" style="margin-left:128px; margin-bottom:20px;" class="btn btn-primary btn-md">Register Admin</button>
-                    </form>   
-                    
+               @include('includes.errormessage')
+               {!! Form::open(['action' => 'AdminController@saveadmin', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}       
+               <div class="row">
+                 <div class="form-group col-md-12 {{$errors->has('hname') ? 'has-error': ''}}" >
+                    <label>Select Hotel</label>
+                    <select name="hname" class="form-control">
+                      @foreach($hotels as $hotel)
+                        <option type="hname">{{$hotel->name}}</option>
+                      @endforeach
+                    </select>
+                    @if ($errors->has('hname'))
+                      <span class="invalid-feedback" role="alert">
+                          <i class="help-block">{{$errors->first('hname')}}</i>
+                      </span>
+                    @endif
+                  </div>
+               </div>             
+               <div class="form-group {{$errors->has('fname') ? 'has-error': ''}}" >
+                  {{Form::label('fname', 'First Name')}}
+                  {{Form::text('fname', '', ['class' => 'form-control', 'placeholder' => 'First Name'])}}
+                  @if ($errors->has('fname'))
+                      <span class="invalid-feedback" role="alert">
+                          <i class="help-block">{{$errors->first('fname')}}</i>
+                      </span>
+                    @endif
+              </div>
+              <div class="form-group  {{$errors->has('lname') ? 'has-error': ''}}">
+                  {{Form::label('lname', 'Last Name')}}
+                  {{Form::text('lname', '', ['class' => 'form-control', 'placeholder' => 'Last Name'])}}
+                  @if ($errors->has('lname'))
+                      <span class="invalid-feedback" role="alert">
+                          <i class="help-block">{{$errors->first('lname')}}</i>
+                      </span>
+                    @endif
+              </div>
+              <div class="form-group {{$errors->has('email') ? 'has-error': ''}}" >
+                  {{Form::label('email', 'Email')}}
+                  {{Form::text('email', '', ['class' => 'form-control', 'placeholder' => 'Email'])}}
+                  @if ($errors->has('email'))
+                      <span class="invalid-feedback" role="alert">
+                          <i class="help-block">{{$errors->first('email')}}</i>
+                      </span>
+                    @endif
+              </div>
+              <div class="form-group {{$errors->has('contact') ? 'has-error': ''}}" >
+                  {{Form::label('contact', 'Contact Number')}}
+                  {{Form::text('contact', '', ['class' => 'form-control', 'placeholder' => 'Contact Number'])}}
+                  @if ($errors->has('contact'))
+                      <span class="invalid-feedback" role="alert">
+                          <i class="help-block">{{$errors->first('contact')}}</i>
+                      </span>
+                    @endif
+              </div>
+              <div class="form-group {{$errors->has('password') ? 'has-error': ''}}" >
+                  {{Form::label('password', 'Password')}}
+                  {{Form::text('password', '', ['class' => 'form-control', 'placeholder' => 'password'])}}
+                  @if ($errors->has('password'))
+                      <span class="invalid-feedback" role="alert">
+                          <i class="help-block">{{$errors->first('password')}}</i>
+                      </span>
+                    @endif
+              </div>
             </div>
+              {{Form::submit('Submit', ['class'=>'btn btn-primary'])}}
+            </div>
+            {!! Form::close() !!} 
           </div>
       </section>
     </div>

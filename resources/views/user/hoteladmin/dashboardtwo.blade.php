@@ -7,7 +7,7 @@
       <header class="main-header">
     
         <!-- Logo -->
-        <a href="#" class="logo">
+        <a href="/user" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>Ad</b>B</span>
           <!-- logo for regular state and mobile devices -->
@@ -41,8 +41,9 @@
                   <li class="user-header">
                     <img src="{{asset('dist/img/user3-128x128.jpg')}}" class="img-circle" alt="User Image">
     
-                    <p>
-                    {{auth()->user()->name}} - Hotel Admin </p>
+                    <p>{{auth()->user()->fname}} {{auth()->user()->lname}}- Hotel Admin </p>
+                    <h5>{{auth()->user()->hotel_id}}</h5>
+                    
                   </li>
                   <!-- Menu Body -->
                   <li class="user-body">
@@ -83,9 +84,10 @@
               <img src="{{asset('dist/img/user3-128x128.jpg')}}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-              <p>{{auth()->user()->name}}</p>
+              <p>{{auth()->user()->fname}} {{auth()->user()->lname}}</p>
               <!-- Status -->
               <a><i class="fa fa-circle text-success"></i> Hotel Admin</a>
+              <a>{{auth()->user()->hotel_id}}</a>
             </div>
           </div>
     
@@ -95,27 +97,33 @@
     <br>
           <!-- Sidebar Menu -->
           <ul class="sidebar-menu">
-            <li class="header">Section</li>
+              <li class="header"><h4>{{auth()->user()->hotel_id}}</h4></li>
             <!-- Optionally, you can add icons to the links -->
             <li class="treeview">
-            <a href="#"><i class="fa fa-link" style="color:darkgreen; font-size:20px;"></i> <span> Booking Requests</span></a>
+            <a href="{{route('viewrequests')}}"><i class="fa fa-bell" style="color:darkgreen; font-size:20px;"></i> <span> Booking Requests</span></a>
             </li>
             <li class="treeview">
-                <a href="#"><i class="fa fa-building" style="color:darkgreen; font-size:20px;"></i> <span> Manage Rooms</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class="fa fa-building" style="color:darkgreen; font-size:20px;"></i> <span> Manage Hotel Rooms</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                  <li><a href="#">Create Room</a></li>
-                  <li><a href="#">Rooms List </a></li>
+                  <li><a href="{{route('viewcategory')}}">Create Room Categories</a></li>
+                  <li><a href="{{route('viewroom')}}">Create new Room</a></li>
+                  <li><a href="#">Update Room Availability </a></li>
                 </ul>
               </li>
             <li class="treeview">
               <a href="#"><i class="fa fa-info" style="color:darkgreen; font-size:20px;"></i> <span>Manage Hotel Information</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="#">Update Information</a></li>
-                <li><a href="#">Update Gallery</a></li>
+                <li><a href="{{route('geninfo')}}">General Information</a></li>
+                <li><a href="{{route('dispinfo')}}">Display Information</a></li>
+                <li><a href="{{route('galinfo')}}">Image Gallery</a></li>
+                <li><a href="{{route('coninfo')}}">Contact Details</a></li>
               </ul>
             </li>
             <li class="treeview">
-              <a href="#"><i class="fa fa-print" style="color:darkgreen; font-size:20px;"></i> <span> Bookings Report</span></a>
+              <a href="{{route('repinfo')}}"><i class="fa fa-print" style="color:darkgreen; font-size:20px;"></i> <span> Bookings Report</span></a>
+            </li>
+            <li class="treeview">
+                <a href="{{route('map')}}"><i class="fa fa-globe" style="color:darkgreen; font-size:20px;"></i> <span>Configure Google Map</span></a>
             </li>
           </ul>
           <!-- /.sidebar-menu -->
@@ -139,7 +147,7 @@
                                   </div>
                               @endif
                               <h4>Welcome Hotel Administrator</h4>
-                              <small>{{ Auth::user()->name }}</small>
+                              <small>{{ Auth::user()->fname }} {{auth()->user()->lname}}</small>
                              </div>
                         </div>
                   </section>
