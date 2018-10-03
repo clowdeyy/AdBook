@@ -21,8 +21,9 @@
                         Options
                     </a>
                 </li>
-                <li><a href="#"><i class="fa fa-user" style="color: #008000; font-size: 20px;"></i> Profile</a></li>
-                <li><a href="#"><i class="fa fa-history" style="color: #008000; font-size: 20px;"></i> Transactions</a></li>
+                <li><a href="{{route('transac')}}"><i class="fa fa-history" style="color: #008000; font-size: 20px;"></i> Transactions</a></li>
+                <li><a href="{{route('guestedit')}}"><i class="fa fa-user" style="color: #008000; font-size: 20px;"></i> Edit Profile</a></li>
+                <li><a href=""><i class="fa fa-envelope" style="color: #008000; font-size: 20px;"></i> Message</a></li>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -30,22 +31,22 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <section class="content-header">
-                    <h1>
-                      User Dashboard
-                    </h1>
-                  </section>
-                  <section class="content">
-                      <div class="panel panel-default">
-                          <div class="panel-body">
-                              @if (session('status'))
-                                  <div class="alert alert-success" role="alert">
-                                      {{ session('status') }}
-                                  </div>
-                              @endif
-                              Welcome {{ Auth::user()->name }}!
-                             </div>
-                        </div>
-                  </section>
+                <h1>
+                  Welcome Guest!
+                </h1>
+              </section>
+              <section class="content">
+                  <div class="panel panel-default">
+                      <div class="panel-body">
+                          @if (session('status'))
+                              <div class="alert alert-success" role="alert">
+                                  {{ session('status') }}
+                              </div>
+                          @endif
+                          <h5>{{ Auth::user()->fname }} {{ Auth::user()->lname }}</h5>
+                         </div>
+                    </div>
+              </section>
         </div>
         <!-- /#page-content-wrapper -->
 

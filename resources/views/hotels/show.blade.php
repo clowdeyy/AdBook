@@ -14,27 +14,25 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <br style="height: .5em;">
-                    <a href="/hotels" class="btn btn-outline-success my-2 my-sm-0" style="padding: 8px; margin:15px; margin-top:15px; -webkit-border-radius: 10px;  width: 218px;">Back</a>
+                    <a href="/hotels" class="btn btn-outline-success my-2 my-sm-0" style="padding: 8px; margin:15px; margin-top:15px; -webkit-border-radius: 10px;  width: 218px;">Back to Hotels</a>
                 <br style="height: .5em;">
                 <li class="sidebar-brand">
                     <a style="font-size: 25px; margin:10px;">
-                       {{$hotel->name}}
+                              {{$hotel->name}}
                     </a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-home" style="color: #008000; font-size: 20px;" ></i> Hotel Information</a>
+                    <a href="/hotels/{{$hotel->id}}"><i class="fa fa-home" style="color: #008000; font-size: 20px;" ></i> Hotel Information</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-images" style="color: #008000; font-size: 20px;"></i> Browse Images</a>
+
+                <a href="{{ URL('/gallery/'.$hotel->id) }}"><i class="fa fa-images" style="color: #008000; font-size: 20px;"></i> Browse Images</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-bed" style="color: #008000; font-size: 20px;"></i> Rooms Offered</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-book" style="color: #008000; font-size: 20px;"></i> Make a Booking</a>
+                    <a href="{{ URL('/rooms/'.$hotel->id) }}"><i class="fa fa-bed" style="color: #008000; font-size: 20px;"></i> Book a room</a>
                 </li>
                 <li >
-                    <a href="#"><i class="fa fa-globe" style="color: #008000; font-size: 20px;"></i> Contact Details</a>
+                    <a href="{{ URL('/contact/'.$hotel->id) }}"><i class="fa fa-globe" style="color: #008000; font-size: 20px;"></i> Contact Details</a>
                 </li>
             </ul>
         </div>
@@ -44,10 +42,19 @@
         <div id="page-content-wrapper">
                     <div class="container-fluid">
                             <div class="row">
-                                <div class="col-lg-12">
-                                    <h1>Minim ex non minim consequat id.</h1>
-                                    <p>Duis ea sunt dolor irure eiusmod est sunt consequat. Incididunt ea adipisicing est eu consequat veniam sint proident veniam labore excepteur incididunt qui nostrud. Consectetur labore sint aliquip anim eiusmod laborum id anim. Cillum minim duis anim aliqua enim laboris ex. Non fugiat irure sunt dolore. Excepteur aliqua tempor exercitation incididunt.</p>
-                                    
+                                <div class="col-lg-18">
+                                    <br>
+                                    @if(isset($info))
+                                    <h1>{{$info->name}}</h1><br>
+                                    <h5 style="font-size:15px;">{{$info->desc1}}</h5><br>
+                                    <h5  style="font-size:15px;">{{$info->desc2}}</h5><br>
+                                    <h5><b>What we offer here:</b> </h5>
+                                    <h5 style="margin-left:15px; font-size:18px;"><i class="fa fa-check" style="color: #008000; font-size: 20px;"></i> {{$info->offer1}}</h5>
+                                    <h5 style="margin-left:15px; font-size:18px;"><i class="fa fa-check" style="color: #008000; font-size: 20px;"></i>  {{$info->offer2}}</h5>
+                                    <h5 style="margin-left:15px; font-size:18px;"><i class="fa fa-check" style="color: #008000; font-size: 20px;"></i> {{$info->offer3}}</h5>
+                                    <h5 style="margin-left:15px; font-size:18px;"><i class="fa fa-check" style="color: #008000; font-size: 20px;"></i> {{$info->offer4}}</h5>
+                                    <h5 style="margin-left:15px; font-size:18px;"><i class="fa fa-check" style="color: #008000; font-size: 20px;"></i> {{$info->offer5}}</h5>
+                                    @endif
                                 </div>
                             </div>
                         </div>

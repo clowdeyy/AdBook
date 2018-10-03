@@ -101,6 +101,7 @@
             <li class="treeview">
                 <a href="{{route('viewhotel')}}"><i class="fa fa-building" style="color:darkgreen; font-size:20px;"></i> <span>Manage Hotels</span></a>
               </li>
+
           </ul>
           <!-- /.sidebar-menu -->
         </section>

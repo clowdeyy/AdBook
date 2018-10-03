@@ -94,7 +94,7 @@
                                 <div class="form-check offset-md-4">
                                   <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
                                   <label class="form-check-label" for="invalidCheck2">
-                                    I agree to <a href="#"><span>terms and conditions</span></a>
+                                    I agree to the <a href="#"><span>Terms of Service and Privacy Policy</span></a>
                                   </label>
                                 </div>
                               </div>

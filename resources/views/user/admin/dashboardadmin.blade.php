@@ -7,7 +7,7 @@
       <header class="main-header">
     
         <!-- Logo -->
-        <a href="#" class="logo">
+        <a href="/" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>Ad</b>B</span>
           <!-- logo for regular state and mobile devices -->
@@ -34,7 +34,7 @@
                   <!-- The user image in the navbar-->
                   <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="user-image" alt="User Image">
                   <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                  <span class="hidden-xs">{{auth()->user()->name}}</span>
+                  <span class="hidden-xs">{{auth()->user()->fname}} {{auth()->user()->lname}}</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- The user image in the menu -->
@@ -42,7 +42,7 @@
                     <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
     
                     <p>
-                    {{auth()->user()->name}} - Admin </p>
+                    {{auth()->user()->fname}} {{auth()->user()->lname}} - Admin </p>
                   </li>
                   <!-- Menu Body -->
                   <li class="user-body">
@@ -83,7 +83,7 @@
               <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-              <p>{{auth()->user()->name}}</p>
+              <p>{{auth()->user()->fname}} {{auth()->user()->lname}}</p>
               <!-- Status -->
               <a><i class="fa fa-circle text-success"></i> Administrator</a>
             </div>
@@ -101,6 +101,7 @@
             <li class="treeview">
                 <a href="{{route('viewhotel')}}"><i class="fa fa-building" style="color:darkgreen; font-size:20px;"></i> <span>Manage Hotels</span></a>
               </li>
+
           </ul>
           <!-- /.sidebar-menu -->
         </section>

@@ -34,7 +34,7 @@
                   <!-- The user image in the navbar-->
                   <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="user-image" alt="User Image">
                   <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                  <span class="hidden-xs">{{auth()->user()->name}}</span>
+                  <span class="hidden-xs">{{auth()->user()->fname}} {{auth()->user()->lname}}</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- The user image in the menu -->
@@ -96,18 +96,19 @@
             <li class="header">Section</li>
             <!-- Optionally, you can add icons to the links -->
             <li class="treeview">
-                <a href="{{route('viewhotel')}}"><i class="fa fa-user" style="color:darkgreen; font-size:20px;"></i> <span>Manage Hotel Admins</span></a>
+                <a href="{{route('viewuser')}}"><i class="fa fa-user" style="color:darkgreen; font-size:20px;"></i> <span>Manage Hotel Admins</span></a>
                 </li>
             <li class="treeview">
-                <a href="/user"><i class="fa fa-building" style="color:darkgreen; font-size:20px;"></i> <span>Manage Hotels</span></a>
+                <a href="{{route('viewhotel')}}"><i class="fa fa-building" style="color:darkgreen; font-size:20px;"></i> <span>Manage Hotels</span></a>
               </li>
+
           </ul>
           <!-- /.sidebar-menu -->
         </section>
         <!-- /.sidebar -->
       </aside>
-    
-
+      
+      
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
       <section class="content-header">
@@ -116,20 +117,45 @@
               <h3 class="text-center">Register New Hotel</h3>
             </div>
             <div class="panel-body">
-                @if(Session::has('yes'))
+              @if(Session::has('yes'))
                   <div class="alert alert-info alert-dismissable">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                     <strong>Information!</strong>{{Session::get('yes')}}
                   </div>
-               @endif
-
-               <form style="margin-left: 100px;">
-                  <div class="form-row">
-                        <div class="form-group col-md-10">
-                          <label>Hotel Name</label>
-                          <input class="form-control form-control-lg" placeholder="Hotel Name">
-                        </div>
-          </div>
+              @endif
+              @include('includes.errormessage')
+            {!! Form::open(['action' => 'HotelsController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+                <div class="form-group {{$errors->has('name') ? 'has-error': ''}}">
+                    {{Form::label('name', 'Name')}}
+                    {{Form::text('name', '', ['class' => 'form-control', 'placeholder' => 'Hotel Name'])}}
+                    @if ($errors->has('name'))
+                    <span class="invalid-feedback" role="alert">
+                        <i class="help-block">{{$errors->first('name')}}</i>
+                    </span>
+                  @endif
+                </div>
+                <div class="form-group {{$errors->has('description') ? 'has-error': ''}}">
+                    {{Form::label('description', 'Description')}}
+                    {{Form::textarea('description', '', ['class' => 'form-control', 'placeholder' => 'Hotel Description'])}}
+                    @if ($errors->has('description'))
+                    <span class="invalid-feedback" role="alert">
+                        <i class="help-block">{{$errors->first('description')}}</i>
+                    </span>
+                  @endif
+                </div>
+                <div class="form-group {{$errors->has('file') ? 'has-error': ''}}">
+                    {{Form::label('file', 'Select Display Photo')}}
+                    {{Form::file('cover_image')}}
+                    @if ($errors->has('file'))
+                    <span class="invalid-feedback" role="alert">
+                        <i class="help-block">{{$errors->first('file')}}</i>
+                    </span>
+                  @endif
+                </div>
+                 {{Form::submit('Submit', ['class'=>'btn btn-primary'])}}
+                </div>
+             {!! Form::close() !!}
+            </div>
       </section>
     </div>
 

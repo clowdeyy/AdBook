@@ -10,6 +10,11 @@
 
     <title>{{ config('app.name', 'AdBook') }}</title>
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -19,7 +24,7 @@
     
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{{asset ('css/app.css') }}">
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
 </head>
 <body>
     <div id="app">
